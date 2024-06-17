@@ -79,10 +79,20 @@ body {
 
     &.orderPage__menuTable--drinks {
       grid-template-columns: repeat(4, auto);
+
+      tbody td:hover {
+        cursor: pointer;
+        background-color: #234823;
+      }
     }
 
     &.orderPage__menuTable--options {
       grid-template-columns: repeat(2, auto);
+
+      tbody tr:hover {
+        cursor: pointer;
+        background-color: #234823;
+      }
     }
 
     td, th {
@@ -92,11 +102,6 @@ body {
     tbody { 
       tr:nth-child(even) {
         background-color: #242424;
-      }
-
-      td:hover {
-        cursor: pointer;
-        background-color: #234823;
       }
     }
 
