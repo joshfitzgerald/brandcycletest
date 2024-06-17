@@ -1,88 +1,142 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  font-family: 'Work Sans', 'Inter', Arial,  sans-serif;
+}
+
+body {
+  font-size: 62.5%;
+}
+
 #root {
-  max-width: 1280px;
+  max-width: 768px; // project scope – mobile-only
   margin: 0 auto;
-  padding: 2rem;
+  padding: 20px 20px 0;
   text-align: center;
   font-family: 'Work Sans', 'Inter', Arial,  sans-serif;
 }
 
-  /* .logoAnimation {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .hoverShadow1:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .hoverShadow2:hover {
-    filter: drop-shadow(0 0 2em #61dafbaa);
-  } */
-
-  /* @keyframes logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
-  } */
-
-  /* @media (prefers-reduced-motion: no-preference) {
-    a:nth-of-type(2) .logo {
-      animation: logo-spin infinite 20s linear;
-    }
-  } */
-
-  /* .card {
-    padding: 2em;
-  }
-
-  .read-the-docs {
-    color: #888;
-  } */
-  html {
-    font-size: 100%;
-    font-family: 'Work Sans', 'Inter', Arial,  sans-serif;
-  }
-  body {
-    font-size: 62.5%;
-  }
-
 .orderPage {
+  width: 100%;
+  text-align: left;
+  border: 2px solid #555;
+  padding: 0 32px 32px;
+  
   h1 {
-    font-size: 2.2rem;
+    font-size: 2rem;
     line-height: 1.1;
     font-weight: 900;
-    text-transform: uppercase;
-    margin: 0;
+    margin: 32px 0 0;
   }
   h2 {
     font-size: 1.4rem;
     line-height: 1.1;
-    font-weight: 900;
-    /* text-transform: uppercase; */
+    font-weight: 700;
+    padding: 16px 0 0;
     margin: 0;
+
+    span {
+      font-size: 1.2rem;
+      font-style: italic;
+      font-weight: 400;
+    }
   }
   h3, h4, h5, h6 {
-    font-size: 1.6rem;
+    padding: 8px 0 0;
+    font-size: 1.4rem;
     line-height: 1.1;
   }
 
   p, a, button, label, input, table {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     line-height: 1.1;
   }
 
-  &__table {
+  &__menuTable {
     width: 100%;
+    max-width: 350px;
     border-collapse: collapse;
     border-spacing: 0;
-    // add alternating row table colors
-    tr:nth-child(even) {
-      background-color: #f2f2f2;
+    padding: 16px 0 0; 
+    border: 1px solid #666;
+    margin: 32px 0 0;
+    text-align: right;
+
+    :where(td:last-child, th:last-child) {
+      text-align: right;
+    }
+
+    :where(td:first-child, th:first-child) {
+      text-align: left;
+    }
+
+    &.orderPage__menuTable--drinks {
+      grid-template-columns: repeat(4, auto);
+    }
+
+    &.orderPage__menuTable--options {
+      grid-template-columns: repeat(2, auto);
+    }
+
+    td, th {
+      padding: 4px 12px;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #242424;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #2f2f2f;
+    }
+
+    thead tr {
+      background-color: #555;
+    }
+
+    td {
+      font-weight: 300;
+    }
+
+    h2 {
+      padding-top: 0;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 8px;
+  }
+
+  select {
+    padding: 6px;
+    margin:  2px 0 0;
+    width: 100%;
+    max-width: 350px;
+    font-size: 1rem;
+  }
+
+  &__ctaButton {
+    width: 100%;
+    max-width: 350px;
+    min-height: 44px;
+    font-size: 1.6rem;
+    margin: 24px 0 0; 
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 2px solid #777;
+    background-color: green;
+
+    &:disabled {
+      background-color: #666;
+      color: #999;
     }
   }
 }
