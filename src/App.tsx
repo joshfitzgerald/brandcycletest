@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import { useEffect, useState } from "react"
-import { DrinkOptionProps, SizeOptionProps, MilkOptionProps, drinkOrderProps } from './types/drinkMenuTypes'
+import { DrinkOptionProps, SizeOptionProps, MilkOptionProps, DrinkOrderProps } from './types/drinkMenuTypes'
 
 const fetchPageOptions = async () => {
   const fakeResponse = {
@@ -70,7 +70,7 @@ const fetchPageOptions = async () => {
   return Promise.resolve(fakeResponse)
 }
 
-const submitDrinkRequest = (drinkOrder: drinkOrderProps) => {
+const submitDrinkRequest = (drinkOrder: DrinkOrderProps) => {
   alert(JSON.stringify(drinkOrder, null, 2))
 }
 
@@ -108,8 +108,9 @@ export function SelectDrinkPage() {
   return (
     <main className="orderPage">
       <article className="orderPage__menu">
+
+        {/* static drink menu generated from json menu data */}
         <h1>Drink Menu</h1>
-        
         <table className="orderPage__menuTable orderPage__menuTable--drinks">
           <thead>
             <tr>
@@ -120,6 +121,7 @@ export function SelectDrinkPage() {
             </tr>
           </thead>
           <tbody>
+            {/* maps over drinkOptions array to creates a row on the <table> (drink menu) */}
             {drinkOptions.map((drinkOption) => (
               <tr>
                 <td>{drinkOption.name}</td>
@@ -139,6 +141,7 @@ export function SelectDrinkPage() {
             </tr>
           </thead>
           <tbody>
+            {/* maps over milkOptions array to creates a row on the <table> (drink menu) */}
             {milkOptions.map((milkOption) => (
               <tr>
                 <td>{milkOption.name}</td>
@@ -149,19 +152,21 @@ export function SelectDrinkPage() {
         </table>
       </ article>
 
+      {/* users order section, <form> used to process user order */}
       <section  className="orderPage__order">
         <h1>Select your drink</h1>
         <form 
           onSubmit={onSubmit} 
           className="orderPage__orderForm"
         >
-
+          {/* required to submit form */}
           <h2>Drink type</h2>
           <select 
             value={selectedDrink} 
             onChange={(event) => setSelectedDrink(event.target.value)}
           >
             <option value="" disabled> –– Select drink –– </option>
+            {/* maps over the drinkOptions array. creates a drink options on the <select>'s dropdown */}
             {drinkOptions.map((drinkOption) => (
               <option 
                 key={drinkOption.id} 
@@ -172,12 +177,15 @@ export function SelectDrinkPage() {
             ))}
           </select>
 
+          {/* requred to submit form */}
           <h2>Drink size</h2>
           <select 
             value={selectedSize} 
             onChange={(event) => setSelectedSize(event.target.value)}
           >
+            {/* disabled default option with placeholder text */}
             <option value="" disabled> –– Select size –– </option>
+            {/* maps over the sizeOptions array. creates a size options on the <select>'s dropdown */}
             {sizeOptions.map((sizeOption) => (
               <option 
                 key={sizeOption.id} 
@@ -188,12 +196,15 @@ export function SelectDrinkPage() {
             ))}
           </select>
 
+          {/* milk is optional. "None" defaults to empty string */}
           <h2>Milk <span>(optional)</span></h2>
           <select 
             value={selectedMilk} 
             onChange={(event) => setSelectedMilk(event.target.value)}
           >
+            {/* disabled default option with placeholder text */}
             <option value="" disabled> –– None –– </option>
+            {/* maps over the sizeOptions array. creates a size options on the <select>'s dropdown */}
             {milkOptions.map((milkOption) => (
               <option 
                 key={milkOption.id} 
@@ -202,6 +213,8 @@ export function SelectDrinkPage() {
             ))}
           </select>
 
+          {/* #TODO add client side validation when submitting in disabled state */}
+          {/* button disabled until user selects a 1. drink size and 2. drink type from select dropdown menu */}
           <button 
             className="orderPage__ctaButton" 
             type="submit" 

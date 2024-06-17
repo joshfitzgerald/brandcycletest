@@ -21,7 +21,7 @@ export type SizeOptionProps = {
   name: string;
 };
 
-export type drinkOrderProps = {
+export type DrinkOrderProps = {
   type: string;
   size: string;
   milk: string;
