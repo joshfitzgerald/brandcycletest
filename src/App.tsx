@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.css';
+import './App.scss';
 import { useEffect, useState } from "react"
 import { DrinkOptionProps, SizeOptionProps, MilkOptionProps, drinkOrderProps } from './types/drinkMenuTypes'
 
@@ -106,93 +106,97 @@ export function SelectDrinkPage() {
   }
 
   return (
-    <div>
-      <h3>Drinks</h3>
-      <table>
-        <thead>
-          <tr>
-          <th>Sm</th>
-          <th>Med</th>
-          <th>Lg</th>
-          </tr>
-        </thead>
-        <tbody>
-          {drinkOptions.map((drinkOption) => (
+    <main className="orderPage">
+      <article className="orderPage__menu">
+        <h1>Drink Menu</h1>
+        <h2>Drinks</h2>
+        <table className="orderPage__menuTable">
+          <thead>
             <tr>
-              <td>{drinkOption.name}</td>
-              <td>{drinkOption.prices.small}</td>
-              <td>{drinkOption.prices.medium}</td>
-              <td>{drinkOption.prices.large}</td>
+            <th>Sm</th>
+            <th>Med</th>
+            <th>Lg</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {drinkOptions.map((drinkOption) => (
+              <tr>
+                <td>{drinkOption.name}</td>
+                <td>{drinkOption.prices.small}</td>
+                <td>{drinkOption.prices.medium}</td>
+                <td>{drinkOption.prices.large}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-      <h3>Milk Options</h3>
-      <table>
-        <tbody>
-          {milkOptions.map((milkOption) => (
-            <tr>
-              <td>{milkOption.name}</td>
-              <td>{milkOption.price}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <h2>Milk Options</h2>
+        <table className="orderPage__menuTable">
+          <tbody>
+            {milkOptions.map((milkOption) => (
+              <tr>
+                <td>{milkOption.name}</td>
+                <td>{milkOption.price}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </ article>
 
+      <section  className="orderPage__order">
+        <h1>Select your drink</h1>
 
-      <h2>Select your drink</h2>
+        <form onSubmit={onSubmit} className="orderPage__orderForm">
+          <h2>Size</h2>
+          <select 
+            value={selectedSize} 
+            onChange={(event) => setSelectedSize(event.target.value)}
+          >
+            <option value=""></option>
+            {sizeOptions.map((sizeOption) => (
+              <option 
+                key={sizeOption.id} 
+                value={sizeOption.id}
+              >
+                {sizeOption.name}
+              </option>
+            ))}
+          </select>
 
-      <form onSubmit={onSubmit}>
-        <h4>Size</h4>
-        <select 
-          value={selectedSize} 
-          onChange={(event) => setSelectedSize(event.target.value)}
-        >
-          <option value=""></option>
-          {sizeOptions.map((sizeOption) => (
-            <option 
-              key={sizeOption.id} 
-              value={sizeOption.id}
-            >
-              {sizeOption.name}
-            </option>
-          ))}
-        </select>
+          <h2>Type</h2>
+          <select 
+            value={selectedDrink} 
+            onChange={(event) => setSelectedDrink(event.target.value)}
+          >
+            <option value=""></option>
+            {drinkOptions.map((drinkOption) => (
+              <option 
+                key={drinkOption.id} 
+                value={drinkOption.id}
+              >
+                {drinkOption.name}
+              </option>
+            ))}
+          </select>
 
-        <h4>Type</h4>
-        <select 
-          value={selectedDrink} 
-          onChange={(event) => setSelectedDrink(event.target.value)}
-        >
-          <option value=""></option>
-          {drinkOptions.map((drinkOption) => (
-            <option 
-              key={drinkOption.id} 
-              value={drinkOption.id}
-            >
-              {drinkOption.name}
-            </option>
-          ))}
-        </select>
+          <h2>Milk Option</h2>
+          <select 
+            value={selectedMilk} 
+            onChange={(event) => setSelectedMilk(event.target.value)}
+          >
+            <option value=""></option>
+            {milkOptions.map((milkOption) => (
+              <option 
+                key={milkOption.id} 
+                value={milkOption.id}>{milkOption.name}
+              </option>
+            ))}
+          </select>
 
-        <h4>Milk Option</h4>
-        <select 
-          value={selectedMilk} 
-          onChange={(event) => setSelectedMilk(event.target.value)}
-        >
-          <option value=""></option>
-          {milkOptions.map((milkOption) => (
-            <option 
-              key={milkOption.id} 
-              value={milkOption.id}>{milkOption.name}
-            </option>
-          ))}
-        </select>
-
-        <button type="submit">Add to Cart</button>
-      </form>
-    </div>
+          <button type="submit">Add to Cart</button>
+        </form>
+      </section>
+    </main>
   )
 }
 
