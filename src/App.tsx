@@ -124,10 +124,10 @@ export function SelectDrinkPage() {
             {/* maps over drinkOptions array to creates a row on the <table> (drink menu) */}
             {drinkOptions.map((drinkOption) => (
               <tr>
-                <td>{drinkOption.name}</td>
-                <td>{drinkOption.prices.small}</td>
-                <td>{drinkOption.prices.medium}</td>
-                <td>{drinkOption.prices.large}</td>
+                <td onClick={() => setSelectedDrink(drinkOption.id)}>{drinkOption.name}</td>
+                <td onClick={() => {setSelectedDrink(drinkOption.id); setSelectedSize('small');}}>{drinkOption.prices.small}</td>
+                <td onClick={() => {setSelectedDrink(drinkOption.id); setSelectedSize('medium');}}>{drinkOption.prices.medium}</td>
+                <td onClick={() => {setSelectedDrink(drinkOption.id); setSelectedSize('large');}}>{drinkOption.prices.large}</td>
               </tr>
             ))}
           </tbody>
@@ -143,7 +143,7 @@ export function SelectDrinkPage() {
           <tbody>
             {/* maps over milkOptions array to creates a row on the <table> (drink menu) */}
             {milkOptions.map((milkOption) => (
-              <tr>
+              <tr onClick={() => setSelectedMilk(milkOption.id)}>
                 <td>{milkOption.name}</td>
                 <td>{milkOption.price}</td>
               </tr>

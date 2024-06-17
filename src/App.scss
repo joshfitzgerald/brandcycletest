@@ -11,6 +11,7 @@ html {
 
 body {
   font-size: 62.5%;
+  background-color: #222;
 }
 
 #root {
@@ -26,6 +27,7 @@ body {
   text-align: left;
   border: 2px solid #555;
   padding: 0 32px 32px;
+  color: #fff;
   
   h1 {
     font-size: 2rem;
@@ -87,8 +89,15 @@ body {
       padding: 4px 12px;
     }
 
-    tbody tr:nth-child(even) {
-      background-color: #242424;
+    tbody { 
+      tr:nth-child(even) {
+        background-color: #242424;
+      }
+
+      td:hover {
+        cursor: pointer;
+        background-color: #234823;
+      }
     }
 
     tbody tr:nth-child(odd) {
