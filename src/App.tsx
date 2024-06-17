@@ -160,7 +160,7 @@ export function SelectDrinkPage() {
           className="orderPage__orderForm"
         >
           {/* required to submit form */}
-          <h2>Drink type</h2>
+          <h2>Drink type <span>(required)</span></h2>
           <select 
             value={selectedDrink} 
             onChange={(event) => setSelectedDrink(event.target.value)}
@@ -178,7 +178,7 @@ export function SelectDrinkPage() {
           </select>
 
           {/* requred to submit form */}
-          <h2>Drink size</h2>
+          <h2>Drink size <span>(required)</span></h2>
           <select 
             value={selectedSize} 
             onChange={(event) => setSelectedSize(event.target.value)}
@@ -197,13 +197,13 @@ export function SelectDrinkPage() {
           </select>
 
           {/* milk is optional. "None" defaults to empty string */}
-          <h2>Milk <span>(optional)</span></h2>
+          <h2>Milk</h2>
           <select 
             value={selectedMilk} 
             onChange={(event) => setSelectedMilk(event.target.value)}
           >
             {/* disabled default option with placeholder text */}
-            <option value="" disabled> –– None –– </option>
+            <option value=""> –– None –– </option>
             {/* maps over the sizeOptions array. creates a size options on the <select>'s dropdown */}
             {milkOptions.map((milkOption) => (
               <option 
