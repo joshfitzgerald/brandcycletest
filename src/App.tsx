@@ -109,13 +109,14 @@ export function SelectDrinkPage() {
     <main className="orderPage">
       <article className="orderPage__menu">
         <h1>Drink Menu</h1>
-        <h2>Drinks</h2>
-        <table className="orderPage__menuTable">
+        
+        <table className="orderPage__menuTable orderPage__menuTable--drinks">
           <thead>
             <tr>
-            <th>Sm</th>
-            <th>Med</th>
-            <th>Lg</th>
+              <th><h2>Drinks</h2></th>
+              <th>Sm</th>
+              <th>Med</th>
+              <th>Lg</th>
             </tr>
           </thead>
           <tbody>
@@ -130,8 +131,13 @@ export function SelectDrinkPage() {
           </tbody>
         </table>
 
-        <h2>Milk Options</h2>
-        <table className="orderPage__menuTable">
+        <table className="orderPage__menuTable orderPage__menuTable--options">
+          <thead>
+            <tr>
+              <th><h2>Milk options</h2></th>
+              <th>Price</th>
+            </tr>
+          </thead>
           <tbody>
             {milkOptions.map((milkOption) => (
               <tr>
@@ -145,30 +151,17 @@ export function SelectDrinkPage() {
 
       <section  className="orderPage__order">
         <h1>Select your drink</h1>
+        <form 
+          onSubmit={onSubmit} 
+          className="orderPage__orderForm"
+        >
 
-        <form onSubmit={onSubmit} className="orderPage__orderForm">
-          <h2>Size</h2>
-          <select 
-            value={selectedSize} 
-            onChange={(event) => setSelectedSize(event.target.value)}
-          >
-            <option value=""></option>
-            {sizeOptions.map((sizeOption) => (
-              <option 
-                key={sizeOption.id} 
-                value={sizeOption.id}
-              >
-                {sizeOption.name}
-              </option>
-            ))}
-          </select>
-
-          <h2>Type</h2>
+          <h2>Drink type</h2>
           <select 
             value={selectedDrink} 
             onChange={(event) => setSelectedDrink(event.target.value)}
           >
-            <option value=""></option>
+            <option value="" disabled> –– Select drink –– </option>
             {drinkOptions.map((drinkOption) => (
               <option 
                 key={drinkOption.id} 
@@ -179,12 +172,28 @@ export function SelectDrinkPage() {
             ))}
           </select>
 
-          <h2>Milk Option</h2>
+          <h2>Drink size</h2>
+          <select 
+            value={selectedSize} 
+            onChange={(event) => setSelectedSize(event.target.value)}
+          >
+            <option value="" disabled> –– Select size –– </option>
+            {sizeOptions.map((sizeOption) => (
+              <option 
+                key={sizeOption.id} 
+                value={sizeOption.id}
+              >
+                {sizeOption.name}
+              </option>
+            ))}
+          </select>
+
+          <h2>Milk <span>(optional)</span></h2>
           <select 
             value={selectedMilk} 
             onChange={(event) => setSelectedMilk(event.target.value)}
           >
-            <option value=""></option>
+            <option value="" disabled> –– None –– </option>
             {milkOptions.map((milkOption) => (
               <option 
                 key={milkOption.id} 
@@ -193,7 +202,13 @@ export function SelectDrinkPage() {
             ))}
           </select>
 
-          <button type="submit">Add to Cart</button>
+          <button 
+            className="orderPage__ctaButton" 
+            type="submit" 
+            disabled={!selectedDrink || !selectedSize}
+          >
+            Add to Cart
+          </button>
         </form>
       </section>
     </main>
