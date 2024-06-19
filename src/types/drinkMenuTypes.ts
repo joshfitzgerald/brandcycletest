@@ -5,15 +5,15 @@ export type DrinkOptionProps = {
 };
 
 export type PriceOptionProps = {
-  small: string;
-  medium: string;
-  large: string;
+  small: number;
+  medium: number;
+  large: number;
 };
 
 export type MilkOptionProps = {
   id: string;
   name: string;
-  price: string;
+  price: number;
 };
 
 export type SizeOptionProps = {
