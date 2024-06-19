@@ -1,0 +1,247 @@
+.orderV2 {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  border: 2px solid #292929;
+  padding: 0 0 80px;
+  margin: 0;
+  color: #fff;
+  height: 100vh;
+  height: 100dvh;
+
+  &__order {
+    height: 100%;
+    align-items: start;
+
+    h1 {
+      width: 100%;
+      padding: 32px 12px 24px;
+      margin: 0;
+      text-align: center;
+      font-size: 1.8rem;
+
+      @media screen and (min-width: 500px) {
+        font-size: 2.4rem;
+        
+      }
+    }
+  }
+
+  &__addToCart {
+    position: fixed; 
+    bottom: 0;
+    padding: 12px;
+    width: 100%;
+    margin-top: auto;
+    background-color: #222;
+    box-shadow: 0 -8px 8px 0 rgba(0, 0 ,0, 0.2 );
+
+    &Amount {
+      padding: 0;
+      margin-left: auto;
+    }
+  }
+
+  &__ctaButton {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+    min-height: 44px;
+    font-size: 1.5rem;
+    padding: 12px 20px;
+    margin: auto 24px 0 0; 
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 2px solid #777;
+    background-color: green;
+    color: #fff;
+
+    &:disabled {
+      background-color: #666;
+      color: #999;
+    }
+  }
+
+  &__optionList {
+    width: 100%;
+
+    &--drink {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+      height: calc(100% - 200px);
+      padding: 0;
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+
+      @media screen and (min-width: 500px) {
+        font-size: 2.4rem;
+        
+      }
+
+      // if any drink is selected, select drinks from list that are unselected 
+      &:has(input:checked) label:not(:has(input:checked)) { 
+        display: none;
+      }
+
+      .orderV2__optionImage {
+        border-radius: 50%;
+        aspect-ratio: 1/1;
+        width: 100px;
+        height: 100px;
+
+        @media screen and (min-width: 500px) and (min-height: 830px) {
+          width: 200px;
+          height: 200px;
+        }
+      }
+
+      &:has(input:checked) { 
+        padding: 60px 0 0;
+        flex: 0 0 auto;
+        height: auto;
+
+        .orderV2__option--drink {
+          border-width: 0;
+        }
+
+        .orderV2__option {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        img {
+          justify-self: end;
+          width: 200px;
+          height: 200px;
+        }
+      }
+    }
+
+    &--size, 
+    &--milk {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding: 0 12px;
+      margin: 0;
+
+      h2 {
+        width: 100%;;
+        flex: 1 0 auto;
+        padding: 24px 0 0;
+      }
+    }
+  }
+
+  &__option {
+    &--drink {
+      flex: 1 0 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      align-items: center;
+      width: 100%;
+      padding: 4px 12px;
+      border-bottom: 2px solid #292929;
+
+      @media screen and (min-width: 450px){
+        display: grid;
+        grid-template-areas: 'image name';
+        grid-template-columns: auto minmax(auto, 1fr);
+      }
+
+      &:first-child {
+        border-top: 2px solid #292929;
+      }
+
+      &Name {
+        grid-area: name;
+      }
+
+      &Size {
+        grid-area: size;
+      }
+    }
+
+    &--size, 
+    &--milk {
+      flex: 1 0 0;
+      display: grid;
+      grid-template-areas: 
+        'image price'
+        'name name ';
+      align-items: end;
+      justify-content: center;
+      align-content: end;
+      gap: 4px 8px;
+      padding: 12px;
+      border: 2px solid #292929;
+      margin: 0;
+      border-radius: 8px;
+      font-weight: 800;
+      text-transform: uppercase;
+
+      &:has(input:checked) {
+        border-color: #fcfcfc;
+      }
+
+      .orderV2__optionName {
+        grid-area: name;
+        font-size: 1.2rem;
+        line-height: 1;
+        margin: 0;
+      }
+
+      .orderV2__optionPrice {
+        grid-area: price;
+        font-size: 1.7rem;
+        margin: 0;
+      }
+
+      .orderV2__icon {
+        grid-area: image;
+      }
+    }
+
+    &--size {
+      .orderV2__optionPrice {
+        font-size: 1.9rem;
+      }
+
+      .orderV2__icon {
+        width: auto;
+      }
+
+      &:nth-child(2) .orderV2__icon {
+        height: 30px;
+      }
+
+      &:nth-child(3) .orderV2__icon {
+        height: 45px;
+      }
+
+      &:nth-child(4) .orderV2__icon {
+        height: 60px;
+      }
+    }
+
+    &--milk {
+      .orderV2__optionPrice {
+        font-size: 1.4rem;
+      }
+
+      image {
+        padding: 20px 0;
+      }
+    }
+
+    input {
+      position: absolute;
+      opacity: 0;
+    }
+  }
+}
