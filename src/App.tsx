@@ -1,5 +1,5 @@
 import React from 'react';
-import './App.scss';
+import './app.scss';
 import { useEffect, useState } from "react"
 import { DrinkOptionProps, SizeOptionProps, MilkOptionProps, DrinkOrderProps } from './types/drinkMenuTypes'
 
@@ -74,7 +74,6 @@ const submitDrinkRequest = (drinkOrder: DrinkOrderProps) => {
   alert(JSON.stringify(drinkOrder, null, 2))
 }
 
-
 export function SelectDrinkPage() {
   const [drinkOptions , setDrinkOptions] = useState<DrinkOptionProps[]>([])
   const [milkOptions, setMilkOptions] = useState<MilkOptionProps[]>([])
@@ -110,7 +109,7 @@ export function SelectDrinkPage() {
       <article className="orderPage__menu">
 
         {/* static drink menu generated from json menu data */}
-        <h1>Drink Menu</h1>
+        <h1>Drink Menu ver.1</h1>
         <table className="orderPage__menuTable orderPage__menuTable--drinks">
           <thead>
             <tr>
