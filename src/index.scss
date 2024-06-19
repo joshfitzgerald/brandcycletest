@@ -1,33 +1,70 @@
-:root {
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  font-family: 'Work Sans', 'Inter', Arial,  sans-serif;
+  margin: 0;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  min-width: 320px;
+  height: 100%;
+  font-size: 62.5%;
+  background-color: #222;
   font-family: "Work Sans", "Inter", system-ui, "Avenir", Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+}
 
+:root {
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+// app version links
+.versionNav {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+
+  ul {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    line-height: 1;
+  }
+
+  li {
+    list-style: none;
+    color: #aaa;
+    font-size: 1.2rem;
+  }
+
+  a {
+    color: #aaa;
+    text-decoration: underline;
+    font-size: 0.9rem;
+  }
+
+
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
   text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100dvh;
 }
 
 button {
@@ -41,9 +78,7 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
-}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -60,4 +95,63 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+h1 {
+  font-size: 2rem;
+  line-height: 1.1;
+  font-weight: 900;
+  margin: 32px 0 0;
+}
+h2 {
+  font-size: 1.4rem;
+  line-height: 1.1;
+  font-weight: 700;
+  padding: 16px 0;
+  margin: 0;
+
+  span {
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 400;
+  }
+}
+h3, h4, h5, h6 {
+  padding: 8px 0 0;
+  font-size: 1.4rem;
+  line-height: 1.1;
+}
+
+p, a, button, table {
+  font-size: 1.4rem;
+  line-height: 1.1;
+}
+
+
+
+fieldset {
+  border: 0;
+}
+
+select {
+  padding: 6px;
+  margin:  2px 0 0;
+  width: 100%;
+  max-width: 350px;
+  font-size: 1rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+select {
+  padding: 6px;
+  margin:  2px 0 0;
+  width: 100%;
+  max-width: 350px;
+  font-size: 1rem;
 }

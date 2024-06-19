@@ -1,63 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 100%;
-  font-family: 'Work Sans', 'Inter', Arial,  sans-serif;
-}
-
-body {
-  font-size: 62.5%;
-  background-color: #222;
-}
-
-#root {
-  max-width: 768px; // project scope – mobile-only
-  margin: 0 auto;
-  padding: 20px 20px 0;
-  text-align: center;
-  font-family: 'Work Sans', 'Inter', Arial,  sans-serif;
-}
-
 .orderPage {
   width: 100%;
+  max-width: 418px;
+  margin: 0 auto;
   text-align: left;
   border: 2px solid #555;
   padding: 0 32px 32px;
   color: #fff;
-  
-  h1 {
-    font-size: 2rem;
-    line-height: 1.1;
-    font-weight: 900;
-    margin: 32px 0 0;
-  }
-  h2 {
-    font-size: 1.4rem;
-    line-height: 1.1;
-    font-weight: 700;
-    padding: 16px 0 0;
-    margin: 0;
 
-    span {
-      font-size: 1.2rem;
-      font-style: italic;
-      font-weight: 400;
+  &__orderForm {
+    h2 { 
+      align-self: start;
     }
   }
-  h3, h4, h5, h6 {
-    padding: 8px 0 0;
-    font-size: 1.4rem;
-    line-height: 1.1;
-  }
-
-  p, a, button, label, input, table {
-    font-size: 1.4rem;
-    line-height: 1.1;
-  }
+  
 
   &__menuTable {
     width: 100%;
@@ -66,7 +21,7 @@ body {
     border-spacing: 0;
     padding: 16px 0 0; 
     border: 1px solid #666;
-    margin: 32px 0 0;
+    margin: 32px auto 0;
     text-align: right;
 
     :where(td:last-child, th:last-child) {
@@ -120,21 +75,6 @@ body {
     h2 {
       padding-top: 0;
     }
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 8px;
-  }
-
-  select {
-    padding: 6px;
-    margin:  2px 0 0;
-    width: 100%;
-    max-width: 350px;
-    font-size: 1rem;
   }
 
   &__ctaButton {
